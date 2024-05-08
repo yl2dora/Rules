@@ -1,0 +1,48 @@
+name: Update Rulesets
+
+on:
+  schedule:
+    # 每天UTC时间00:00运行
+    - cron: '0 0 * * *'
+
+jobs:
+  update-rules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Download rules
+      run: |
+        mkdir -p rules/non_ip rules/ip rules/domainset
+        wget -O rules/non_ip/reject-drop.conf https://ruleset.skk.moe/List/non_ip/reject-drop.conf
+        wget -O rules/non_ip/reject.conf https://ruleset.skk.moe/List/non_ip/reject.conf
+        wget -O rules/non_ip/reject-no-drop.conf https://ruleset.skk.moe/List/non_ip/reject-no-drop.conf
+        wget -O rules/ip/reject.conf https://ruleset.skk.moe/List/ip/reject.conf
+        wget -O rules/domainset/reject.conf https://ruleset.skk.moe/List/domainset/reject.conf
+        wget -O rules/domainset/speedtest.conf https://ruleset.skk.moe/List/domainset/speedtest.conf
+        wget -O rules/non_ip/sogouinput.conf https://ruleset.skk.moe/List/non_ip/sogouinput.conf
+        wget -O rules/non_ip/stream.conf https://ruleset.skk.moe/List/non_ip/stream.conf
+        wget -O rules/non_ip/apple_cdn.conf https://ruleset.skk.moe/List/non_ip/apple_cdn.conf
+        wget -O rules/non_ip/microsoft_cdn.conf https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf
+        wget -O rules/non_ip/apple_cn.conf https://ruleset.skk.moe/List/non_ip/apple_cn.conf
+        wget -O rules/non_ip/apple_services.conf https://ruleset.skk.moe/List/non_ip/apple_services.conf
+        wget -O rules/non_ip/microsoft.conf https://ruleset.skk.moe/List/non_ip/microsoft.conf
+        wget -O rules/non_ip/ai.conf https://ruleset.skk.moe/List/non_ip/ai.conf
+        wget -O rules/non_ip/cdn.conf https://ruleset.skk.moe/List/non_ip/cdn.conf
+        wget -O rules/domainset/cdn.conf https://ruleset.skk.moe/List/domainset/cdn.conf
+        wget -O rules/non_ip/global.conf https://ruleset.skk.moe/List/non_ip/global.conf
+        wget -O rules/non_ip/lan.conf https://ruleset.skk.moe/List/non_ip/lan.conf
+        wget -O rules/non_ip/domestic.conf https://ruleset.skk.moe/List/non_ip/domestic.conf
+        wget -O rules/ip/telegram.conf https://ruleset.skk.moe/List/ip/telegram.conf
+        wget -O rules/ip/domestic.conf https://ruleset.skk.moe/List/ip/domestic.conf
+        wget -O rules/ip/china_ip.conf https://ruleset.skk.moe/List/ip/china_ip.conf
+
+    - name: Commit and push if changes
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git add .
+        git commit -m "Updated rulesets" || echo "No changes to commit"
+        git push
