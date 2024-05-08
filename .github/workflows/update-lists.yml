@@ -1,0 +1,48 @@
+name: Update Lists
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天午夜运行
+
+jobs:
+
+  update-lists:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Update lists
+      run: |
+        mkdir -p lists
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-drop.conf -o lists/reject-drop.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject.conf -o lists/reject.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-no-drop.conf -o lists/reject-no-drop.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/reject.conf -o lists/reject-ip.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/reject.conf -o lists/reject-domainset.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/speedtest.conf -o lists/speedtest-domainset.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/sogouinput.conf -o lists/sogouinput.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/stream.conf -o lists/stream.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/apple_cdn.conf -o lists/apple_cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf -o lists/microsoft_cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/apple_cn.conf -o lists/apple_cn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/apple_services.conf -o lists/apple_services.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/microsoft.conf -o lists/microsoft.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/ai.conf -o lists/ai.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/cdn.conf -o lists/cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/cdn.conf -o lists/cdn-domainset.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/global.conf -o lists/global.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/lan.conf -o lists/lan.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/domestic.conf -o lists/domestic.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/telegram.conf -o lists/telegram-ip.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/domestic.conf -o lists/domestic-ip.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/china_ip.conf -o lists/china_ip.conf
+        
+    - name: Commit changes
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+        git add lists
+        git commit -m "Update lists" || echo "No changes to commit"
+        git push
