@@ -39,6 +39,10 @@ jobs:
         curl -sSL https://ruleset.skk.moe/List/ip/telegram.conf -o lists/telegram-ip.conf
         curl -sSL https://ruleset.skk.moe/List/ip/domestic.conf -o lists/domestic-ip.conf
         curl -sSL https://ruleset.skk.moe/List/ip/china_ip.conf -o lists/china_ip.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/reject.conf -o lists/domainset_reject.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject.conf -o lists/non_ip_reject.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-no-drop.conf -o lists/reject_no_drop.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-drop.conf -o lists/reject_drop.conf
         
     - name: Commit changes
       run: |
