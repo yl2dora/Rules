@@ -17,6 +17,7 @@ jobs:
     - name: Update lists
       run: |
         mkdir -p lists
+        curl -sSL https://ruleset.skk.moe/List/non_ip/sogouinput.conf -o lists/sogouinput.conf
         curl -sSL https://ruleset.skk.moe/List/domainset/cdn.conf -o lists/cdn.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/cdn.conf -o lists/non_ip_cdn.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/telegram.conf -o lists/telegram.conf
