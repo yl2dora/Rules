@@ -17,25 +17,25 @@ jobs:
     - name: Update lists
       run: |
         mkdir -p lists
-        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-drop.conf -o lists/reject-drop.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/reject.conf -o lists/reject.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/reject-no-drop.conf -o lists/reject-no-drop.conf
-        curl -sSL https://ruleset.skk.moe/List/ip/reject.conf -o lists/reject-ip.conf
-        curl -sSL https://ruleset.skk.moe/List/domainset/reject.conf -o lists/reject-domainset.conf
-        curl -sSL https://ruleset.skk.moe/List/domainset/speedtest.conf -o lists/speedtest-domainset.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/sogouinput.conf -o lists/sogouinput.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/stream.conf -o lists/stream.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/cdn.conf -o lists/cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/cdn.conf -o lists/non_ip_cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/telegram.conf -o lists/telegram.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/apple_cdn.conf -o lists/apple_cdn.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf -o lists/microsoft_cdn.conf
+        curl -sSL https://ruleset.skk.moe/List/domainset/download.conf -o lists/download.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/download.conf -o lists/non_ip_download.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/apple_cn.conf -o lists/apple_cn.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/apple_services.conf -o lists/apple_service.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/microsoft -o lists/microsoft.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/global.conf -o lists/global.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/apple_services.conf -o lists/apple_services.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/microsoft.conf -o lists/microsoft.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/ai.conf -o lists/ai.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/cdn.conf -o lists/cdn.conf
-        curl -sSL https://ruleset.skk.moe/List/domainset/cdn.conf -o lists/cdn-domainset.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/global.conf -o lists/global.conf
-        curl -sSL https://ruleset.skk.moe/List/non_ip/lan.conf -o lists/lan.conf
         curl -sSL https://ruleset.skk.moe/List/non_ip/domestic.conf -o lists/domestic.conf
+        curl -sSL https://ruleset.skk.moe/List/non_ip/lan.conf -o lists/lan.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/reject.conf -o lists/reject.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/telegram.conf -o lists/telegram_ip.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/lan.conf.conf -o lists/ip_lan.conf
+        curl -sSL https://ruleset.skk.moe/List/ip/domestic.conf -o lists/ip_domestic.conf
         curl -sSL https://ruleset.skk.moe/List/ip/telegram.conf -o lists/telegram-ip.conf
         curl -sSL https://ruleset.skk.moe/List/ip/domestic.conf -o lists/domestic-ip.conf
         curl -sSL https://ruleset.skk.moe/List/ip/china_ip.conf -o lists/china_ip.conf
